@@ -1,0 +1,32 @@
+package fr.sample.jahia.training.rules
+
+// list any import classes here.
+import org.jahia.services.content.rules.*
+import org.jahia.services.content.JCRContentUtils
+import org.jahia.services.content.JCRValueWrapper
+import org.slf4j.Logger
+import fr.sample.jahia.training.services.HelloService
+
+expander rules.dsl
+
+// declare any global variables here
+global User user
+global Service service
+global Logger logger
+global JCRContentUtils jcrUtils
+global HelloService helloService
+
+rule "Hello text"
+    when
+        Not in operation import
+        A property text has been set on a node
+             - the node has the type jnt:text
+    then
+        Log "property: {property}"
+        Log "propertyValue [" + propertyValue.getClass().getName() + "]: " + propertyValue
+        Log "propertyValueAsString [" + propertyValueAsString.getClass().getName() + "]: " + propertyValueAsString
+        Hello propertyValueAsString
+        Log "node [" + node.getClass().getName() + "]: " + node
+        Log "$node [" + $node.getClass().getName() + "]: " + $node
+        Log "Message: " + msg
+end
