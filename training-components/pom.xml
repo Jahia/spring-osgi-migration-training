@@ -80,6 +80,7 @@
                 <configuration>
                     <instructions>
                         <_dsannotations>
+                            fr.sample.jahia.training.components.actions.HelloWorldAction,
                             fr.sample.jahia.training.components.initializers.LocaleChoiceListInitializer,
                             fr.sample.jahia.training.components.rules.SampleModuleGlobalObject,
                             fr.sample.jahia.training.components.services.GenericContentService
