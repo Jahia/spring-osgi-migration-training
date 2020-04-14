@@ -79,7 +79,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <_dsannotations>fr.sample.jahia.training.components.services.GenericContentService
+                        <_dsannotations>
+                            fr.sample.jahia.training.components.initializers.LocaleChoiceListInitializer,
+                            fr.sample.jahia.training.components.services.GenericContentService
                         </_dsannotations>
                     </instructions>
                 </configuration>
