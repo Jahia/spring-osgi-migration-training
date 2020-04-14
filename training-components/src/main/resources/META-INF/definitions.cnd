@@ -1,0 +1,16 @@
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<mix = 'http://www.jcp.org/jcr/mix/1.0'>
+<tmix = 'http://www.training.org/jahia/mix/1.0'>
+<tnt = 'http://www.training.org/jahia/nt/1.0'>
+
+[tnt:genericContent] > jnt:content, jmix:editorialContent, jmix:structuredContent
+ - contactMail (string) mandatory internationalized < '^$|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$'
+ - repeatMail (string) mandatory internationalized < '^$|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$'
+ - image (weakreference, picker[image]) < 'jmix:image'
+ - code (string) protected
+ - file (weakreference, picker[file]) < 'jnt:file'
+ + data (tnt:sampleData) = tnt:sampleData autocreated
+
+[tnt:sampleData] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title
+
