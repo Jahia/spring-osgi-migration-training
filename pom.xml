@@ -86,7 +86,7 @@
                         <extensions>true</extensions>
                         <configuration>
                             <instructions>
-                                <Jahia-Source-Folders>/opt/jahia/dx/digital-factory-data/sources/${project.artifactId}
+                                <Jahia-Source-Folders>/opt/jahia/dx/digital-factory-data/sources/${project.parent.artifactId}/${project.artifactId}
                                 </Jahia-Source-Folders>
                             </instructions>
                         </configuration>
