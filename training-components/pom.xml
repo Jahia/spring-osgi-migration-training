@@ -100,6 +100,7 @@
                             fr.sample.jahia.training.components.initializers.LocaleChoiceListInitializer,
                             fr.sample.jahia.training.components.interceptors.GenericContentInterceptorRegistrator,
                             fr.sample.jahia.training.components.interceptors.GenericContentInterceptor,
+                            fr.sample.jahia.training.components.jobs.CitySynchronizationJob,
                             fr.sample.jahia.training.components.rules.SampleModuleGlobalObject,
                             fr.sample.jahia.training.components.services.GenericContentService,
                             fr.sample.jahia.training.components.validators.CustomValidators
