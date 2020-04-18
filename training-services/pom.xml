@@ -59,7 +59,10 @@
     </description>
 
     <properties>
-        <export-package>fr.sample.jahia.training.services</export-package>
+        <export-package>
+            fr.sample.jahia.training.services,
+            fr.sample.jahia.training.services.beans
+        </export-package>
     </properties>
 
     <build>
@@ -70,7 +73,12 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <_dsannotations>fr.sample.jahia.training.services.HelloService</_dsannotations>
+                        <_dsannotations>
+                            fr.sample.jahia.training.services.ApiService,
+                            fr.sample.jahia.training.services.CityService,
+                            fr.sample.jahia.training.services.HelloService,
+                            fr.sample.jahia.training.services.WeatherService
+                        </_dsannotations>
                     </instructions>
                 </configuration>
             </plugin>
