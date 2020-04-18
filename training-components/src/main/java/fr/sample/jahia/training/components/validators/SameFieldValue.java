@@ -1,8 +1,7 @@
 package fr.sample.jahia.training.components.validators;
 
-import org.jahia.services.content.JCRNodeWrapper;
+import org.apache.commons.lang.StringUtils;
 
-import javax.jcr.RepositoryException;
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -14,7 +13,7 @@ import java.lang.annotation.*;
  *
  * @author tleclere
  */
-@Target({ElementType.FIELD, ElementType.METHOD})
+@Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = SameFieldValue.SameFieldValueValidator.class)
 @Documented
@@ -41,7 +40,7 @@ public @interface SameFieldValue {
     /**
      * Validator implementation
      */
-    class SameFieldValueValidator implements ConstraintValidator<SameFieldValue, JCRNodeWrapper> {
+    class SameFieldValueValidator implements ConstraintValidator<SameFieldValue, GenericContentValidator> {
         private String property1;
         private String property2;
 
@@ -52,17 +51,16 @@ public @interface SameFieldValue {
         }
 
         /***
-         * @param jcrNodeWrapper
+         * @param genericContentValidator
          * @param constraintValidatorContext
          * @return true if field1 and field2 contain the same value
          */
         @Override
-        public boolean isValid(JCRNodeWrapper jcrNodeWrapper, ConstraintValidatorContext constraintValidatorContext) {
-            try {
-                return jcrNodeWrapper.hasProperty(property1) && jcrNodeWrapper.hasProperty(property2) && jcrNodeWrapper.getProperty(property1).getValue().equals(jcrNodeWrapper.getProperty(property2).getValue());
-            } catch (RepositoryException e) {
-                return false;
+        public boolean isValid(GenericContentValidator genericContentValidator, ConstraintValidatorContext constraintValidatorContext) {
+            if (StringUtils.isNotBlank(genericContentValidator.getContactMail())) {
+                return StringUtils.isNotBlank(genericContentValidator.getRepeatMail()) && genericContentValidator.getContactMail().equals(genericContentValidator.getRepeatMail());
             }
+            return StringUtils.isBlank(genericContentValidator.getRepeatMail());
         }
     }
 }

@@ -15,6 +15,9 @@
 <%--@elvariable id="MY_SESSION_ATTRIBUTE" type="java.lang.String"--%>
 Session attribute: ${MY_SESSION_ATTRIBUTE}<br/>
 
+City: ${currentNode.properties['city'].string}<br/>
+Weather: <jcr:nodePropertyRenderer node="${currentNode}" name="city" renderer="city"/>
+
 <c:set var="imageNode" value="${currentNode.properties['image'].node}"/>
 <c:if test="${not empty imageNode}">
     <template:addCacheDependency node="${imageNode}"/>

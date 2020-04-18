@@ -1,4 +1,4 @@
-package fr.sample.jahia.training.components.services.beans;
+package fr.sample.jahia.training.components.beans;
 
 /**
  * GenericContent mapped with tnt:genericContent

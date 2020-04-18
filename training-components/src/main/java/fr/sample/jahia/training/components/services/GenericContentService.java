@@ -1,6 +1,6 @@
 package fr.sample.jahia.training.components.services;
 
-import fr.sample.jahia.training.components.services.beans.GenericContent;
+import fr.sample.jahia.training.components.beans.GenericContent;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.osgi.service.component.annotations.Component;
 

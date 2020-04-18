@@ -1,7 +1,7 @@
 package fr.sample.jahia.training.components.interceptors;
 
 import fr.sample.jahia.training.components.services.GenericContentService;
-import fr.sample.jahia.training.components.services.beans.GenericContent;
+import fr.sample.jahia.training.components.beans.GenericContent;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.jahia.services.content.interceptor.BaseInterceptor;
 import org.jahia.services.content.nodetypes.ExtendedPropertyDefinition;

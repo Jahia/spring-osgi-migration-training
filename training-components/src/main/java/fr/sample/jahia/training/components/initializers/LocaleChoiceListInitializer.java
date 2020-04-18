@@ -26,7 +26,7 @@ public class LocaleChoiceListInitializer implements ModuleChoiceListInitializer 
     private static final String KEY = "locale";
 
     /**
-     * Do nothing: locale is set with constant LocaleChoiceListInitializer.KEY
+     * Do nothing: key is set with constant LocaleChoiceListInitializer.KEY
      *
      * @param key
      */

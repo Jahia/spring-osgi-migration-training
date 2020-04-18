@@ -1,6 +1,6 @@
 package fr.sample.jahia.training.components.filters;
 
-import fr.sample.jahia.training.components.services.beans.GenericContent;
+import fr.sample.jahia.training.components.beans.GenericContent;
 import org.jahia.services.render.RenderContext;
 import org.jahia.services.render.Resource;
 import org.jahia.services.render.filter.AbstractFilter;

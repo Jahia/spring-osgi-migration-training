@@ -9,9 +9,23 @@
  - repeatMail (string) mandatory internationalized < '^$|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$'
  - image (weakreference, picker[image]) < 'jmix:image'
  - language (string, choicelist[locale,sort])
+ - city (string, choicelist[city,sort])
  - code (string) protected
  - file (weakreference, picker[file]) < 'jnt:file'
  + data (tnt:sampleData) = tnt:sampleData autocreated
 
 [tnt:sampleData] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title
+
+[tmix:identifiableContent] mixin
+ - id (string) mandatory
+
+[tmix:geographicalContent] mixin
+ - lat (double)
+ - lng (double)
+
+[tnt:country] > jnt:content, jmix:editorialContent, jmix:structuredContent, tmix:identifiableContent, mix:title
+ + * (tnt:city) = tnt:city
+
+[tnt:city] > jnt:content, jmix:editorialContent, jmix:structuredContent, tmix:identifiableContent, tmix:geographicalContent, mix:title
+ - postalCode (string) multiple
 

@@ -1,6 +1,6 @@
 package fr.sample.jahia.training.components.validators;
 
-import fr.sample.jahia.training.components.services.beans.GenericContent;
+import fr.sample.jahia.training.components.beans.GenericContent;
 import org.jahia.services.content.decorator.validation.JCRNodeValidatorDefinition;
 import org.osgi.service.component.annotations.Component;
 
@@ -19,7 +19,7 @@ public class CustomValidators extends JCRNodeValidatorDefinition {
      * Register custom validator for generic content nodetype
      *
      * @return validators list
-     * @see fr.sample.jahia.training.components.services.beans.GenericContent
+     * @see fr.sample.jahia.training.components.beans.GenericContent
      * @see fr.sample.jahia.training.components.validators.GenericContentValidator
      */
     @Override

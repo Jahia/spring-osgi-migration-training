@@ -75,6 +75,12 @@
             <version>2.6</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson.osgi.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -90,6 +96,7 @@
                         <_dsannotations>
                             fr.sample.jahia.training.components.actions.HelloWorldAction,
                             fr.sample.jahia.training.components.filters.GenericContentFilter,
+                            fr.sample.jahia.training.components.initializers.CityChoiceListInitializer,
                             fr.sample.jahia.training.components.initializers.LocaleChoiceListInitializer,
                             fr.sample.jahia.training.components.interceptors.GenericContentInterceptorRegistrator,
                             fr.sample.jahia.training.components.interceptors.GenericContentInterceptor,
