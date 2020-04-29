@@ -1,7 +1,5 @@
 package fr.sample.jahia.training.components.jobs;
 
-import fr.sample.jahia.training.services.HelloService;
-import org.jahia.osgi.BundleUtils;
 import org.jahia.registries.ServicesRegistry;
 import org.jahia.services.scheduler.BackgroundJob;
 import org.jahia.services.scheduler.JobSchedulingBean;
@@ -12,7 +10,6 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.quartz.CronTrigger;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
-import org.quartz.JobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +29,7 @@ public class CitySynchronizationJob extends JobSchedulingBean {
     private static final String NAME = "CitySynchronizationJob";
     private static final String DESCRIPTION = "Synchronize cities";
     // every minutes
-    private static final String CRON_EXPRESSION = "* * * * * ?";
+    private static final String CRON_EXPRESSION = "0 0 * ? * * *";
 
     public CitySynchronizationJob() {
         setSchedulerService(ServicesRegistry.getInstance().getSchedulerService());
@@ -52,26 +49,12 @@ public class CitySynchronizationJob extends JobSchedulingBean {
         } catch (ParseException e) {
             LOGGER.error(e.getMessage(), e);
         }
-        JobDetail jobDetail = BackgroundJob.createJahiaJob(NAME, JobImpl.class);
-        jobDetail.setDescription(DESCRIPTION);
-        JobDataMap jobDataMap = new JobDataMap();
+        JobDetail jobDetail = BackgroundJob.createJahiaJob(DESCRIPTION, CitySynchronizationJobImpl.class);
+        JobDataMap jobDataMap = jobDetail.getJobDataMap();
         jobDataMap.put("startTime", LocalDateTime.now(Clock.systemUTC()));
         jobDetail.setJobDataMap(jobDataMap);
         setJobDetail(jobDetail);
 
         super.afterPropertiesSet();
-    }
-
-    public static class JobImpl extends BackgroundJob {
-        @Override
-        public void executeJahiaJob(JobExecutionContext jobExecutionContext) {
-            JobDataMap jobDataMap = jobExecutionContext.getMergedJobDataMap();
-            LOGGER.info("{}", jobDataMap);
-            LOGGER.info("{}", jobDataMap.get("startTime"));
-            HelloService helloService = BundleUtils.getOsgiService(HelloService.class, null);
-            if (helloService != null) {
-                helloService.sayHelloWorld();
-            }
-        }
     }
 }
