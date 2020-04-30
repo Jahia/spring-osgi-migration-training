@@ -88,6 +88,18 @@
             <type>json</type>
             <classifier>manifest</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.jahia.modules</groupId>
+            <artifactId>graphql-dxm-provider</artifactId>
+            <version>2.0.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.graphql-java</groupId>
+            <artifactId>graphql-java-annotations</artifactId>
+            <version>${graphql-java-annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -100,18 +112,7 @@
                     <instructions>
                         <JAX-RS-Alias>/sample</JAX-RS-Alias>
                         <JAX-RS-Application>fr.sample.jahia.training.components.jaxrs.SampleResourceConfig</JAX-RS-Application>
-                        <_dsannotations>
-                            fr.sample.jahia.training.components.actions.HelloWorldAction,
-                            fr.sample.jahia.training.components.filters.GenericContentFilter,
-                            fr.sample.jahia.training.components.initializers.CityChoiceListInitializer,
-                            fr.sample.jahia.training.components.initializers.LocaleChoiceListInitializer,
-                            fr.sample.jahia.training.components.interceptors.GenericContentInterceptorRegistrator,
-                            fr.sample.jahia.training.components.interceptors.GenericContentInterceptor,
-                            fr.sample.jahia.training.components.jobs.CitySynchronizationJob,
-                            fr.sample.jahia.training.components.rules.SampleModuleGlobalObject,
-                            fr.sample.jahia.training.components.services.GenericContentService,
-                            fr.sample.jahia.training.components.validators.CustomValidators
-                        </_dsannotations>
+                        <_dsannotations>*</_dsannotations>
                     </instructions>
                 </configuration>
             </plugin>

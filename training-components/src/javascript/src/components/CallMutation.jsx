@@ -8,7 +8,7 @@ import {useToasts} from 'react-toast-notifications'
 
 const CallMutation = variables => {
     const DELETENODE_MUTATION = gql`mutation DeleteNode($pathOrId: String!) {
-        jcr(workspace: EDIT) {
+        ugc(workspace: EDIT, language: "en") {
             mutateNode(pathOrId: $pathOrId) {
                 delete
             }

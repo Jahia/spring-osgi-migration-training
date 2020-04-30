@@ -2,6 +2,7 @@ import React from 'react';
 import {useQuery} from '@apollo/react-hooks';
 import {gql} from 'apollo-boost';
 import CompanyList from './CompanyList';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default () => {
     const COMPANIES_QUERY = gql`query CompaniesListQuery($language: String) {
@@ -22,6 +23,10 @@ export default () => {
         return `http://localhost:8080/files/live${path}?t=thumbnail2`;
     };
     const {loading, data} = useQuery(COMPANIES_QUERY, {variables: {language: 'en'}});
+    if (loading) {
+        return <CircularProgress/>;
+    }
+
     const companies = [];
     if (data && data.jcr && data.jcr.nodesByQuery) {
         // Build the company data as expected by the Company component
@@ -34,5 +39,5 @@ export default () => {
             });
         });
     }
-    return <CompanyList loading={loading} companies={companies}/>;
+    return <CompanyList companies={companies}/>;
 };
