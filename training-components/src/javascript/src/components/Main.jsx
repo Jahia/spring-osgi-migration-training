@@ -16,6 +16,8 @@ export default () => {
         cache: new InMemoryCache()
     });
 
+    console.log('%c [Training] Main component', 'color: #15b08a');
+
     return <StylesProvider generateClassName={createGenerateClassName({productionPrefix: 'training-'})}>
         <ApolloProvider client={client}>
             <ToastProvider>

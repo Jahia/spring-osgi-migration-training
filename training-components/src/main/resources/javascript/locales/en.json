@@ -1,5 +1,14 @@
 {
   "menu": {
     "label": "Custom settings"
+  },
+  "item": {
+    "label": "Custom item"
+  },
+  "action": {
+    "label": "Custom action"
+  },
+  "additional": {
+    "label": "Custom additional"
   }
 }
