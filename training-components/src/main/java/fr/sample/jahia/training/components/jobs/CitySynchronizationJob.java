@@ -50,6 +50,7 @@ public class CitySynchronizationJob extends JobSchedulingBean {
             LOGGER.error(e.getMessage(), e);
         }
         JobDetail jobDetail = BackgroundJob.createJahiaJob(DESCRIPTION, CitySynchronizationJobImpl.class);
+        jobDetail.setName(NAME);
         JobDataMap jobDataMap = jobDetail.getJobDataMap();
         jobDataMap.put("startTime", LocalDateTime.now(Clock.systemUTC()));
         jobDetail.setJobDataMap(jobDataMap);
