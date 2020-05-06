@@ -3,8 +3,8 @@ package fr.sample.jahia.training.components.graphql;
 import org.jahia.modules.graphql.provider.dxm.DXGraphQLExtensionsProvider;
 import org.osgi.service.component.annotations.Component;
 
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 /**
  * GraphQL extensions
@@ -20,6 +20,6 @@ public class SampleGraphQLExtensionProvider implements DXGraphQLExtensionsProvid
      */
     @Override
     public Collection<Class<?>> getExtensions() {
-        return Collections.singleton(NodeUgcMutationExtensions.class);
+        return Arrays.asList(JCRNodeExtensions.class, QueryExtensions.class, NodeUgcMutationExtensions.class);
     }
 }
