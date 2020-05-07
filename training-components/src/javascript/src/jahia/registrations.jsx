@@ -1,18 +1,15 @@
 import React from 'react';
 import {registry} from '@jahia/ui-extender';
+import SettingsLayout from '../components/SettingsLayout';
 import CloudDownload from '@jahia/moonstone/dist/icons/CloudDownload';
-import Main from '../components/Main';
-import MyNavItem from "../components/MyNavItem";
+import MyNavItem from '../components/MyNavItem';
 
 export const registerRoute = () => {
     registry.add('adminRoute', 'training-settings', {
         targets: ['administration-sites:100'],
         label: 'training-components:menu.label',
         isSelectable: true,
-        render: () => {
-            console.log('%c [Training] Register route', 'color: #15b08a');
-            return <Main/>;
-        }
+        render: () => <SettingsLayout/>
     });
 };
 
@@ -21,10 +18,7 @@ export const registerAdditional = () => {
         targets: ['jcontent:100'],
         label: 'training-components:additional.label',
         isSelectable: true,
-        render: () => {
-            console.log('%c [Training] Register additional', 'color: #15b08a');
-            return <Main/>;
-        }
+        render: () => <SettingsLayout/>
     });
 };
 

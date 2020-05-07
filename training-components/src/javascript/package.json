@@ -28,17 +28,13 @@
   "scripts": {
     "start": "node_modules/.bin/react-scripts start",
     "test": "node_modules/.bin/react-scripts test",
-    "build": "yarn lint:fix && yarn webpack",
-    "build:production": "yarn build -p",
+    "build:app": "yarn lint:fix && yarn webpack",
+    "build:jahia": "yarn lint:fix && yarn webpack --config webpack.jahia.js",
+    "build:production": "yarn build:jahia -p && yarn build:app -p",
     "lint:fix": "./node_modules/.bin/eslint --ext js,jsx --fix src/jahia src/components"
   },
   "dx-extends": {
     "@jahia/jahia-ui-root": "0.0.1"
-  },
-  "jahia": {
-    "apps": {
-      "jahia": "javascript/apps/training-components.bundle.js"
-    }
   },
   "browserslist": {
     "production": [

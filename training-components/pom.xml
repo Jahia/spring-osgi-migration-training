@@ -100,6 +100,12 @@
             <version>${graphql-java-annotations.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jahia.modules</groupId>
+            <artifactId>security-filter</artifactId>
+            <version>2.0.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -111,7 +117,8 @@
                 <configuration>
                     <instructions>
                         <JAX-RS-Alias>/sample</JAX-RS-Alias>
-                        <JAX-RS-Application>fr.sample.jahia.training.components.jaxrs.SampleResourceConfig</JAX-RS-Application>
+                        <JAX-RS-Application>fr.sample.jahia.training.components.jaxrs.SampleResourceConfig
+                        </JAX-RS-Application>
                         <_dsannotations>*</_dsannotations>
                     </instructions>
                 </configuration>

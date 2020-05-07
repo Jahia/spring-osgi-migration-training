@@ -16,6 +16,8 @@
 
 [tnt:sampleData] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title
 
+[tnt:myApp] > jnt:content, jmix:structuredContent, mix:title
+
 [tmix:identifiableContent] mixin
  - id (string) mandatory
 
