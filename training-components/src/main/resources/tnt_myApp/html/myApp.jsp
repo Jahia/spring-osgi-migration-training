@@ -12,19 +12,25 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<template:addResources type="javascript" resources="apps/app.bundle.js"/>
+<c:choose>
+    <c:when test="${renderContext.editMode}">
+        <fmt:message key="tnt_myApp"/>
+    </c:when>
+    <c:otherwise>
+        <template:addResources type="javascript" resources="apps/app.bundle.js"/>
+        <div id="myapp"></div>
 
-<div id="myapp"></div>
-
-<template:addResources type="inlinejavascript">
-    <script type="text/javascript">
-        window.addEventListener("DOMContentLoaded", event => {
-            window.renderMyApp({
-                target: "myapp",
-                config: {
-                    headers: {Authorization: "Bearer ${$TOKEN$}"}
-                }
-            });
-        });
-    </script>
-</template:addResources>
+        <template:addResources type="inlinejavascript">
+            <script type="text/javascript">
+                window.addEventListener("DOMContentLoaded", event => {
+                    window.renderMyApp({
+                        target: "myapp",
+                        config: {
+                            headers: {Authorization: "Bearer ${$TOKEN$}"}
+                        }
+                    });
+                });
+            </script>
+        </template:addResources>
+    </c:otherwise>
+</c:choose>

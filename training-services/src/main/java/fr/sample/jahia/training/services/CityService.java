@@ -2,6 +2,7 @@ package fr.sample.jahia.training.services;
 
 import fr.sample.jahia.training.services.beans.City;
 import fr.sample.jahia.training.services.beans.WeatherCity;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.client.methods.HttpGet;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.stream.Stream;
 
 /**
  * Service to call City API
@@ -55,5 +57,17 @@ public class CityService {
             }
         }
         return new City[0];
+    }
+
+    public City[] getFrenchCitiesByDepartment(String department) {
+        City[] cities = getFrenchCities();
+        if (cities.length == 0) {
+            return cities;
+        }
+        if ("2A".equals(department) || "2B".equals(department)) {
+            department = "20";
+        }
+        final String predicate = department;
+        return Stream.of(cities).filter(city -> StringUtils.startsWith(city.getCode(), predicate)).toArray(City[]::new);
     }
 }

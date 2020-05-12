@@ -4,6 +4,7 @@ import fr.sample.jahia.training.services.CityService;
 import fr.sample.jahia.training.services.WeatherService;
 import fr.sample.jahia.training.services.beans.City;
 import fr.sample.jahia.training.services.beans.WeatherContent;
+import org.apache.commons.lang.StringUtils;
 import org.jahia.services.content.JCRPropertyWrapper;
 import org.jahia.services.content.nodetypes.ExtendedPropertyDefinition;
 import org.jahia.services.content.nodetypes.initializers.ChoiceListValue;
@@ -82,15 +83,20 @@ public class CityChoiceListInitializer extends AbstractChoiceListRenderer implem
 
     /**
      * @param extendedPropertyDefinition
-     * @param s
-     * @param list                       existing choicelist values or null
+     * @param param
+     * @param values                     existing choicelist values or null
      * @param locale
-     * @param map
+     * @param context
      * @return list of locales available in JVM
      */
     @Override
-    public List<ChoiceListValue> getChoiceListValues(ExtendedPropertyDefinition extendedPropertyDefinition, String s, List<ChoiceListValue> list, Locale locale, Map<String, Object> map) {
-        City[] cities = cityService.getFrenchCities();
+    public List<ChoiceListValue> getChoiceListValues(ExtendedPropertyDefinition extendedPropertyDefinition, String param, List<ChoiceListValue> values, Locale locale, Map<String, Object> context) {
+        City[] cities;
+        if (StringUtils.isNotBlank(param)) {
+            cities = cityService.getFrenchCitiesByDepartment(param);
+        } else {
+            cities = cityService.getFrenchCities();
+        }
         if (cities == null || cities.length == 0) {
             return Collections.emptyList();
         }
@@ -112,6 +118,9 @@ public class CityChoiceListInitializer extends AbstractChoiceListRenderer implem
 
     @Override
     public String getStringRendering(Locale locale, ExtendedPropertyDefinition extendedPropertyDefinition, Object propertyValue) throws RepositoryException {
-        return render(propertyValue.toString());
+        if (propertyValue != null) {
+            return render(propertyValue.toString());
+        }
+        return render(null);
     }
 }

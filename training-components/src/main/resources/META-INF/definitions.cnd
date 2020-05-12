@@ -9,7 +9,7 @@
  - repeatMail (string) mandatory internationalized < '^$|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$'
  - image (weakreference, picker[image]) < 'jmix:image'
  - language (string, choicelist[locale,sort])
- - city (string, choicelist[city,sort])
+ - city (string, choicelist[city='44',sort])
  - code (string) protected
  - file (weakreference, picker[file]) < 'jnt:file'
  + data (tnt:sampleData) = tnt:sampleData autocreated

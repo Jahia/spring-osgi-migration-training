@@ -9,10 +9,7 @@ import fr.sample.jahia.training.services.beans.WeatherContent;
 import org.apache.commons.lang.StringUtils;
 import org.jahia.osgi.BundleUtils;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -26,12 +23,12 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 public class SampleEndpoint {
     /**
-     * @return Hello world!
+     * @return Hello {name}!
      */
-    @Path("hello")
+    @Path("hello/{name}")
     @GET
-    public String sayHello() {
-        return BundleUtils.getOsgiService(HelloService.class, null).getMessage(null);
+    public String sayHello(@PathParam("name") String name) {
+        return BundleUtils.getOsgiService(HelloService.class, null).getMessage(name);
     }
 
     /**

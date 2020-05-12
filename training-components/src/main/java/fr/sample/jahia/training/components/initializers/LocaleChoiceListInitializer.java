@@ -44,14 +44,14 @@ public class LocaleChoiceListInitializer implements ModuleChoiceListInitializer 
 
     /**
      * @param extendedPropertyDefinition
-     * @param s
-     * @param list                       existing choicelist values or null
+     * @param param
+     * @param values                       existing choicelist values or null
      * @param locale
-     * @param map
+     * @param context
      * @return list of locales available in JVM
      */
     @Override
-    public List<ChoiceListValue> getChoiceListValues(ExtendedPropertyDefinition extendedPropertyDefinition, String s, List<ChoiceListValue> list, Locale locale, Map<String, Object> map) {
+    public List<ChoiceListValue> getChoiceListValues(ExtendedPropertyDefinition extendedPropertyDefinition, String param, List<ChoiceListValue> values, Locale locale, Map<String, Object> context) {
         return LocaleUtils.availableLocaleList().stream().map(availableLocale -> new ChoiceListValue(availableLocale.getDisplayName(locale), availableLocale.getLanguage())).collect(Collectors.toList());
     }
 }
