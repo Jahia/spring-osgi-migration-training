@@ -1,0 +1,17 @@
+{
+  "settings": {
+    "label": "Options Sample React"
+  },
+  "item": {
+    "tools": {
+      "label": "Aller aux tools"
+    }
+  },
+  "action": {
+    "label": "Nouvelle action",
+    "description": "Sed egestas laoreet euismod. Curabitur est libero, suscipit tempor ex ut, laoreet ullamcorper massa. Suspendisse diam erat, tristique in nibh ut, mollis luctus massa. Integer vel ornare tortor. Etiam lobortis lectus sit amet orci laoreet, at mattis ex efficitur. Etiam molestie vel elit vel tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce faucibus est sit amet lacus dignissim laoreet. Mauris eu porta lorem. Pellentesque mi dolor, mollis a enim in, molestie imperdiet sem. Maecenas sed nunc volutpat, euismod mi sed, bibendum ante. Nulla a lorem nec ipsum porta faucibus et eget nulla."
+  },
+  "additional": {
+    "label": "En plus avec Sample React"
+  }
+}

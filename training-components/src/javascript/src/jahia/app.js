@@ -3,6 +3,7 @@ import React from "react";
 import Main from "../components/Main";
 
 window.renderMyApp = ({target, config}) => {
+    console.log(document.getElementById(target));
     ReactDOM.render(
         <React.StrictMode>
             <Main config={config}/>

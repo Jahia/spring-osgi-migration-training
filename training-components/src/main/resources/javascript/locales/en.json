@@ -1,14 +1,17 @@
 {
-  "menu": {
-    "label": "Custom settings"
+  "settings": {
+    "label": "Settings Sample React"
   },
   "item": {
-    "label": "Custom item"
+    "tools": {
+      "label": "Open tools"
+    }
   },
   "action": {
-    "label": "Custom action"
+    "label": "Custom action",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat."
   },
   "additional": {
-    "label": "Custom additional"
+    "label": "Additional Sample React"
   }
 }

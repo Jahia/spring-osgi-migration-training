@@ -3,11 +3,12 @@ import {registry} from '@jahia/ui-extender';
 import SettingsLayout from '../components/SettingsLayout';
 import CloudDownload from '@jahia/moonstone/dist/icons/CloudDownload';
 import MyNavItem from '../components/MyNavItem';
+import CustomAction from '../components/CustomAction';
 
 export const registerRoute = () => {
     registry.add('adminRoute', 'training-settings', {
         targets: ['administration-sites:100'],
-        label: 'training-components:menu.label',
+        label: 'training-components:settings.label',
         isSelectable: true,
         render: () => <SettingsLayout/>
     });
@@ -34,8 +35,6 @@ export const registerAction = () => {
         buttonIcon: <CloudDownload/>,
         buttonLabel: 'training-components:action.label',
         targets: ['contentActions:10'],
-        onClick: context => {
-            console.log('%c [Training] Register action', 'color: #15b08a', context);
-        }
+        onClick: context => CustomAction(context)
     });
 };
