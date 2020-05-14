@@ -53,4 +53,14 @@ public class GenericContentInterceptor extends BaseInterceptor {
         // set the value
         return super.beforeSetValue(node, name, definition, originalValue);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

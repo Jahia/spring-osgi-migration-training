@@ -36,7 +36,8 @@ public class CityChoiceListInitializer extends AbstractChoiceListRenderer implem
     /**
      * Choicelist initializer key
      */
-    private static final String KEY = "city";
+    private static final String INITIALIZER_KEY = "city";
+    private String key;
 
     /**
      * City service API
@@ -55,6 +56,7 @@ public class CityChoiceListInitializer extends AbstractChoiceListRenderer implem
      */
     @Override
     public void setKey(String key) {
+        this.key = INITIALIZER_KEY;
     }
 
     /**
@@ -62,7 +64,7 @@ public class CityChoiceListInitializer extends AbstractChoiceListRenderer implem
      */
     @Override
     public String getKey() {
-        return KEY;
+        return key;
     }
 
     /**

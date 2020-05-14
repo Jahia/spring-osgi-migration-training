@@ -4,6 +4,8 @@ import fr.sample.jahia.training.components.beans.GenericContent;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.jahia.services.content.decorator.validation.JCRNodeValidator;
 
+import javax.jcr.RepositoryException;
+
 /**
  * Validate generic content
  * Contact mail and repeat mail fields must contain the same value
@@ -21,17 +23,11 @@ public class GenericContentValidator implements JCRNodeValidator {
         this.jcrNodeWrapper = jcrNodeWrapper;
     }
 
-    /**
-     * Nodetype properties
-     */
-    private String contactMail;
-    private String repeatMail;
-
-    public String getContactMail() {
-        return jcrNodeWrapper.getPropertyAsString(GenericContent.PROPERTY_CONTACTMAIL);
+    public boolean hasProperty(String property) throws RepositoryException {
+        return jcrNodeWrapper.hasProperty(property);
     }
 
-    public String getRepeatMail() {
-        return jcrNodeWrapper.getPropertyAsString(GenericContent.PROPERTY_REPEATMAIL);
+    public String getPropertyAsString(String property) {
+        return jcrNodeWrapper.getPropertyAsString(property);
     }
 }

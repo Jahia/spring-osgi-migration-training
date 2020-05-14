@@ -2,6 +2,7 @@ package fr.sample.jahia.training.components.validators;
 
 import org.apache.commons.lang.StringUtils;
 
+import javax.jcr.RepositoryException;
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -57,10 +58,14 @@ public @interface SameFieldValue {
          */
         @Override
         public boolean isValid(GenericContentValidator genericContentValidator, ConstraintValidatorContext constraintValidatorContext) {
-            if (StringUtils.isNotBlank(genericContentValidator.getContactMail())) {
-                return StringUtils.isNotBlank(genericContentValidator.getRepeatMail()) && genericContentValidator.getContactMail().equals(genericContentValidator.getRepeatMail());
+            try {
+                if (genericContentValidator.hasProperty(property1) && StringUtils.isNotBlank(genericContentValidator.getPropertyAsString(property1))) {
+                    return genericContentValidator.hasProperty(property2) && genericContentValidator.getPropertyAsString(property1).equals(genericContentValidator.getPropertyAsString(property2));
+                }
+                return genericContentValidator.hasProperty(property2) && StringUtils.isNotBlank(genericContentValidator.getPropertyAsString(property2));
+            } catch (RepositoryException e) {
+                return false;
             }
-            return StringUtils.isBlank(genericContentValidator.getRepeatMail());
         }
     }
 }

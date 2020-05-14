@@ -23,7 +23,8 @@ public class LocaleChoiceListInitializer implements ModuleChoiceListInitializer 
     /**
      * Choicelist initializer key
      */
-    private static final String KEY = "locale";
+    private static final String INITIALIZER_KEY = "locale";
+    private String key;
 
     /**
      * Do nothing: key is set with constant LocaleChoiceListInitializer.KEY
@@ -32,6 +33,7 @@ public class LocaleChoiceListInitializer implements ModuleChoiceListInitializer 
      */
     @Override
     public void setKey(String key) {
+        this.key = INITIALIZER_KEY;
     }
 
     /**
@@ -39,13 +41,13 @@ public class LocaleChoiceListInitializer implements ModuleChoiceListInitializer 
      */
     @Override
     public String getKey() {
-        return KEY;
+        return key;
     }
 
     /**
      * @param extendedPropertyDefinition
      * @param param
-     * @param values                       existing choicelist values or null
+     * @param values                     existing choicelist values or null
      * @param locale
      * @param context
      * @return list of locales available in JVM

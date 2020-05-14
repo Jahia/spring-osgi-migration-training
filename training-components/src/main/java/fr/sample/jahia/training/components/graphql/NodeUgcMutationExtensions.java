@@ -18,6 +18,9 @@ import javax.jcr.RepositoryException;
 @GraphQLTypeExtension(DXGraphQLProvider.Mutation.class)
 @GraphQLDescription("A mutation extension that adds a possibility to user generated content")
 public class NodeUgcMutationExtensions {
+    private NodeUgcMutationExtensions() {
+    }
+
     /**
      * Root for all JCR mutations.
      *
