@@ -4,6 +4,7 @@ import org.apache.commons.lang3.LocaleUtils;
 import org.jahia.services.content.nodetypes.ExtendedPropertyDefinition;
 import org.jahia.services.content.nodetypes.initializers.ChoiceListValue;
 import org.jahia.services.content.nodetypes.initializers.ModuleChoiceListInitializer;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
 import java.util.List;
@@ -26,6 +27,11 @@ public class LocaleChoiceListInitializer implements ModuleChoiceListInitializer 
     private static final String INITIALIZER_KEY = "locale";
     private String key;
 
+    @Activate
+    public void onActivate() {
+        setKey(INITIALIZER_KEY);
+    }
+
     /**
      * Do nothing: key is set with constant LocaleChoiceListInitializer.KEY
      *
@@ -33,7 +39,7 @@ public class LocaleChoiceListInitializer implements ModuleChoiceListInitializer 
      */
     @Override
     public void setKey(String key) {
-        this.key = INITIALIZER_KEY;
+        this.key = key;
     }
 
     /**

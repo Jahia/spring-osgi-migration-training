@@ -15,8 +15,10 @@
  + data (tnt:sampleData) = tnt:sampleData autocreated
 
 [tnt:sampleData] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title
+ + bigText (jnt:bigText)
+ + * (jnt:text)
 
-[tnt:myApp] > jnt:content, jmix:structuredContent, mix:title
+[tnt:myApp] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title
 
 [tmix:identifiableContent] mixin
  - id (string) mandatory

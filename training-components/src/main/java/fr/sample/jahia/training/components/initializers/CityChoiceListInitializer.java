@@ -12,6 +12,7 @@ import org.jahia.services.content.nodetypes.initializers.ModuleChoiceListInitial
 import org.jahia.services.content.nodetypes.renderer.AbstractChoiceListRenderer;
 import org.jahia.services.content.nodetypes.renderer.ModuleChoiceListRenderer;
 import org.jahia.services.render.RenderContext;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -49,6 +50,11 @@ public class CityChoiceListInitializer extends AbstractChoiceListRenderer implem
      */
     private WeatherService weatherService;
 
+    @Activate
+    public void onActivate() {
+        setKey(INITIALIZER_KEY);
+    }
+
     /**
      * Do nothing: key is set with constant CityChoiceListInitializer.KEY
      *
@@ -56,7 +62,7 @@ public class CityChoiceListInitializer extends AbstractChoiceListRenderer implem
      */
     @Override
     public void setKey(String key) {
-        this.key = INITIALIZER_KEY;
+        this.key = key;
     }
 
     /**

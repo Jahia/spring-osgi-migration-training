@@ -31,18 +31,10 @@ public class CitySynchronizationJob extends JobSchedulingBean {
     // every minutes
     private static final String CRON_EXPRESSION = "0 0 * ? * * *";
 
-    public CitySynchronizationJob() {
-        setSchedulerService(ServicesRegistry.getInstance().getSchedulerService());
-        setSettingsBean(SettingsBean.getInstance());
-    }
-
-    @Deactivate
-    public void onDeactivate() throws Exception {
-        super.destroy();
-    }
-
     @Activate
     public void onActivate() throws Exception {
+        setSchedulerService(ServicesRegistry.getInstance().getSchedulerService());
+        setSettingsBean(SettingsBean.getInstance());
         setRamJob(false);
         try {
             setTrigger(new CronTrigger(NAME, null, CRON_EXPRESSION));
@@ -57,5 +49,10 @@ public class CitySynchronizationJob extends JobSchedulingBean {
         setJobDetail(jobDetail);
 
         super.afterPropertiesSet();
+    }
+
+    @Deactivate
+    public void onDeactivate() throws Exception {
+        super.destroy();
     }
 }

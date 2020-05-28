@@ -25,4 +25,14 @@ Weather: <jcr:nodePropertyRenderer node="${currentNode}" name="city" renderer="c
 </c:if>
 <img class="countDownImage" alt="" src="${imageUrl}?t=thumbnail"/><br/>
 
+<jcr:node var="data" path="${currentNode.path}/data"/>
+<c:choose>
+    <c:when test="${not empty data}">
+        <template:module node="${data}"/>
+    </c:when>
+    <c:when test="${renderContext.editMode}">
+        <template:module path="data" nodeTypes="tnt:sampleData"/>
+    </c:when>
+</c:choose>
+
 <pre>Content generetad in ##TIMEGENERATION##ms</pre>

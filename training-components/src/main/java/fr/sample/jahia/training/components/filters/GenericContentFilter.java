@@ -6,6 +6,7 @@ import org.jahia.services.render.Resource;
 import org.jahia.services.render.filter.AbstractFilter;
 import org.jahia.services.render.filter.RenderChain;
 import org.jahia.services.render.filter.RenderFilter;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
 /**
@@ -32,9 +33,10 @@ public class GenericContentFilter extends AbstractFilter {
     private long startTime;
 
     /**
-     * Instanciate the render filter
+     * On OSGI Component activation
      */
-    public GenericContentFilter() {
+    @Activate
+    public void onActivate() {
         setApplyOnNodeTypes(GenericContent.NODETYPE);
         setApplyOnEditMode(false);
     }

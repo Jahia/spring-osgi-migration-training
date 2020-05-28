@@ -7,6 +7,7 @@ import org.jahia.services.content.JCRSessionWrapper;
 import org.jahia.services.render.RenderContext;
 import org.jahia.services.render.Resource;
 import org.jahia.services.render.URLResolver;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -39,9 +40,10 @@ public class HelloWorldAction extends Action {
     }
 
     /**
-     * Instanciate the action
+     * On OSGI component activation
      */
-    public HelloWorldAction() {
+    @Activate
+    public void onActivate() {
         setName(NAME);
         // action enabled for all users, guest included
         setRequireAuthenticatedUser(false);

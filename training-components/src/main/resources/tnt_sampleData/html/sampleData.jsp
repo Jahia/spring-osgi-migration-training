@@ -12,11 +12,21 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
+<fmt:message key="tnt_sampleData"/>
+
+<jcr:node var="bigText" path="${currentNode.path}/bigText"/>
 <c:choose>
-    <c:when test="${renderContext.editMode}">
-        <fmt:message key="tnt_myApp"/>
+    <c:when test="${not empty bigText}">
+        <template:module node="${bigText}"/>
     </c:when>
-    <c:otherwise>
-        <template:include view="hidden.react"/>
-    </c:otherwise>
+    <c:when test="${renderContext.editMode}">
+        <template:module path="bigText" nodeTypes="jnt:bigText"/>
+    </c:when>
 </c:choose>
+
+<c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:text')}" var="text">
+    <template:module node="${text}"/>
+</c:forEach>
+<c:if test="${renderContext.editMode}">
+    <template:module path="*" nodeTypes="jnt:text"/>
+</c:if>

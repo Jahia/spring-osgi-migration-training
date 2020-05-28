@@ -5,6 +5,7 @@ import fr.sample.jahia.training.components.beans.GenericContent;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.jahia.services.content.interceptor.BaseInterceptor;
 import org.jahia.services.content.nodetypes.ExtendedPropertyDefinition;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -21,7 +22,11 @@ import java.util.Collections;
 public class GenericContentInterceptor extends BaseInterceptor {
     private GenericContentService genericContentService;
 
-    public GenericContentInterceptor() {
+    /**
+     * On OSGI Component activation
+     */
+    @Activate
+    public void onActivate() {
         // intercepts when generic content node is saved
         setNodeTypes(Collections.singleton(GenericContent.NODETYPE));
         // intercepts when language property of generic content node is saved

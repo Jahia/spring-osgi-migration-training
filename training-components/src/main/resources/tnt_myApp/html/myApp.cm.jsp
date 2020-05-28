@@ -12,11 +12,4 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<c:choose>
-    <c:when test="${renderContext.editMode}">
-        <fmt:message key="tnt_myApp"/>
-    </c:when>
-    <c:otherwise>
-        <template:include view="hidden.react"/>
-    </c:otherwise>
-</c:choose>
+<fmt:message key="tnt_myApp"/>
