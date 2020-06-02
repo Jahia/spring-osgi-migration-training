@@ -24,7 +24,7 @@
     </c:when>
 </c:choose>
 
-<c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:text')}" var="text">
+<c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:text,jnt:contentReference')}" var="text">
     <template:module node="${text}"/>
 </c:forEach>
 <c:if test="${renderContext.editMode}">

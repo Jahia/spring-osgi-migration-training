@@ -17,6 +17,7 @@
 [tnt:sampleData] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title
  + bigText (jnt:bigText)
  + * (jnt:text)
+ + * (jnt:contentReference)
 
 [tnt:myApp] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title
 
