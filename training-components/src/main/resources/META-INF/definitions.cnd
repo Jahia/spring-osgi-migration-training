@@ -7,11 +7,11 @@
 [tnt:genericContent] > jnt:content, jmix:editorialContent, jmix:structuredContent
  - contactMail (string) mandatory internationalized < '^$|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$'
  - repeatMail (string) mandatory internationalized < '^$|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$'
- - image (weakreference, picker[image]) < 'jmix:image'
+ - image (weakreference, picker[type='image']) < 'jmix:image'
  - language (string, choicelist[locale,sort])
  - city (string, choicelist[city='44',sort])
  - code (string) protected
- - file (weakreference, picker[file]) < 'jnt:file'
+ - file (weakreference, picker[type='file']) < 'jnt:file'
  + data (tnt:sampleData) = tnt:sampleData autocreated
 
 [tnt:sampleData] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title

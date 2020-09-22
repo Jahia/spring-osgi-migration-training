@@ -47,6 +47,7 @@ public class HelloWorldAction extends Action {
         setName(NAME);
         // action enabled for all users, guest included
         setRequireAuthenticatedUser(false);
+        setRequiredMethods("GET,POST");
     }
 
     /**
