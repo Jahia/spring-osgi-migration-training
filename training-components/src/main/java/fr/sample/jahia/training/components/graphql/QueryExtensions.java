@@ -1,6 +1,7 @@
 package fr.sample.jahia.training.components.graphql;
 
 import fr.sample.jahia.training.components.jobs.TestJob;
+import fr.sample.jahia.training.components.services.GenericContentService;
 import graphql.annotations.annotationTypes.GraphQLDescription;
 import graphql.annotations.annotationTypes.GraphQLField;
 import graphql.annotations.annotationTypes.GraphQLName;
@@ -14,6 +15,7 @@ import org.jahia.modules.graphql.provider.dxm.node.GqlJcrNodeImpl;
 import org.jahia.modules.graphql.provider.dxm.node.NodeQueryExtensions;
 import org.jahia.modules.graphql.provider.dxm.relay.DXPaginatedData;
 import org.jahia.modules.graphql.provider.dxm.relay.PaginationHelper;
+import org.jahia.osgi.BundleUtils;
 import org.jahia.registries.ServicesRegistry;
 import org.jahia.services.content.JCRSessionFactory;
 import org.jahia.utils.LanguageCodeConverters;
@@ -22,6 +24,7 @@ import org.quartz.SchedulerException;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.query.Query;
+import java.util.List;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.stream.StreamSupport;
@@ -58,5 +61,11 @@ public class QueryExtensions {
             throw new DataFetchingException(e);
         }
         return job.getKey().toString();
+    }
+
+    @GraphQLField
+    @GraphQLName("members")
+    public static List<String> getMembers(@GraphQLName("name") String name) {
+        return BundleUtils.getOsgiService(GenericContentService.class, null).getMembers(name);
     }
 }

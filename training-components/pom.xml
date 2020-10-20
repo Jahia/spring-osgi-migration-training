@@ -59,7 +59,7 @@
     </description>
 
     <properties>
-        <jahia-depends>default,facets,training-services</jahia-depends>
+        <jahia-depends>default,facets,ldap,training-services</jahia-depends>
     </properties>
 
     <dependencies>
@@ -120,6 +120,12 @@
             <groupId>org.osgi</groupId>
             <artifactId>osgi.cmpn</artifactId>
             <version>${osgi.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jahia.modules</groupId>
+            <artifactId>ldap</artifactId>
+            <version>4.1.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
