@@ -5,6 +5,7 @@ import org.apache.commons.lang.StringUtils;
 import org.jahia.api.Constants;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.jahia.services.content.JCRSessionFactory;
+import org.jahia.services.content.JCRSessionWrapper;
 import org.jahia.services.content.decorator.JCRUserNode;
 import org.jahia.services.usermanager.JahiaUserManagerService;
 import org.jahia.services.usermanager.ldap.cache.LDAPCacheManager;
@@ -74,12 +75,13 @@ public class GenericContentService {
         Set<String> groups = new LinkedHashSet<>();
         try {
             JCRUserNode userNode;
+            JCRSessionWrapper jcrSession = JCRSessionFactory.getInstance().getCurrentUserSession(Constants.LIVE_WORKSPACE);
             if (StringUtils.isNotEmpty(username)) {
-                userNode = JahiaUserManagerService.getInstance().lookupUser(username);
+                userNode = JahiaUserManagerService.getInstance().lookupUser(username, jcrSession);
             } else {
-                userNode = JCRSessionFactory.getInstance().getCurrentUserSession().getUserNode();
+                userNode = jcrSession.getUserNode();
             }
-            ldapCacheManager.clearUserCacheEntryByName(StringUtils.substringBefore(userNode.getProviderName(), ".users"), username);
+            ldapCacheManager.clearUserCacheEntryByName(StringUtils.substringBefore(userNode.getProviderName(), ".users"), userNode.getName());
             populateGroups(groups, userNode);
         } catch (RepositoryException e) {
             LOGGER.error(e.getMessage(), e);
