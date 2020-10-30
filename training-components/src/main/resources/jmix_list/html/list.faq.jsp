@@ -14,35 +14,48 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <template:include view="hidden.header"/>
 
-<jsp:useBean id="nodesToDisplay" class="java.util.LinkedHashMap"/>
+<jsp:useBean id="nodesToDisplay" class="java.util.LinkedHashMap" scope="request"/>
+<jsp:useBean id="emptyItems" class="java.util.LinkedHashMap" scope="request"/>
+<c:set target="${nodesToDisplay}" property="" value="${emptyItems}"/>
 
 <c:forEach items="${moduleMap.currentList}" var="subchild" begin="${moduleMap.begin}" end="${moduleMap.end}">
     <template:addCacheDependency node="${subchild}"/>
 
     <c:set var="categories" value="${subchild.properties['j:defaultCategory']}"/>
-    <c:forEach items="${categories}" var="category" varStatus="status">
-        <c:if test="${not empty category.node}">
-            <c:set var="categoryTitle" value="${category.node.properties['jcr:title'].string}"/>
+    <c:choose>
+        <c:when test="${not empty categories}">
+            <c:forEach items="${categories}" var="category" varStatus="status">
+                <c:if test="${not empty category.node}">
+                    <template:addCacheDependency node="${category.node}"/>
+                    <c:set var="categoryTitle" value="${category.node.properties['jcr:title'].string}"/>
+                    <c:set var="items" value="${nodesToDisplay[categoryTitle]}"/>
+                    <c:if test="${empty items}">
+                        <jsp:useBean id="items" class="java.util.LinkedHashMap" scope="request"/>
+                        <c:set target="${nodesToDisplay}" property="${categoryTitle}" value="${items}"/>
+                    </c:if>
+                    <c:set target="${items}" property="${subchild.identifier}" value="${subchild}"/>
+                </c:if>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <c:set var="categoryTitle" value=""/>
             <c:set var="items" value="${nodesToDisplay[categoryTitle]}"/>
-            <c:if test="${empty items}">
-                <jsp:useBean id="items" class="java.util.LinkedHashMap"/>
-                <c:set target="${nodesToDisplay}" property="${category.node.properties['jcr:title'].string}"
-                       value="${items}"/>
-            </c:if>
             <c:set target="${items}" property="${subchild.identifier}" value="${subchild}"/>
-        </c:if>
-    </c:forEach>
+        </c:otherwise>
+    </c:choose>
 </c:forEach>
 
 <ul>
     <c:forEach items="${nodesToDisplay}" var="itemsByCategory">
-        <li>${itemsByCategory.key}
-            <ul>
-                <c:forEach items="${itemsByCategory.value}" var="item">
-                    <li><template:module node="${item.value}"/></li>
-                </c:forEach>
-            </ul>
-        </li>
+        <c:if test="${not empty itemsByCategory.value}">
+            <li>${itemsByCategory.key}
+                <ul>
+                    <c:forEach items="${itemsByCategory.value}" var="item">
+                        <li><template:module node="${item.value}"/></li>
+                    </c:forEach>
+                </ul>
+            </li>
+        </c:if>
     </c:forEach>
 
     <c:if test="${moduleMap.editable and renderContext.editMode && !resourceReadOnly}">
