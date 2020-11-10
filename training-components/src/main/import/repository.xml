@@ -7,13 +7,26 @@
                 j:title="training-components"
                 jcr:mixinTypes="jmix:hasExternalProviderExtension"
                 jcr:primaryType="jnt:module">
-         <portlets jcr:primaryType="jnt:portletFolder"/>
-         <files jcr:primaryType="jnt:folder"/>
-         <contents jcr:primaryType="jnt:contentFolder"/>
-         <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
+            <portlets jcr:primaryType="jnt:portletFolder"/>
             <files jcr:primaryType="jnt:folder"/>
             <contents jcr:primaryType="jnt:contentFolder"/>
-         </templates>
-      </training-components>
-   </modules>
+            <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
+                <files jcr:primaryType="jnt:folder"/>
+                <contents jcr:primaryType="jnt:contentFolder"/>
+                <site-settings-base j:view="siteSettings" jcr:primaryType="jnt:template"
+                                    jcr:mixinTypes="jmix:useUILocale">
+                    <custom-picker j:applyOn="jnt:virtualsite"
+                                   j:view="plain"
+                                   jcr:primaryType="jnt:contentTemplate"
+                                   jcr:mixinTypes="jmix:rbTitle"
+                                   j:titleKey="label.customPicker">
+                        <pagecontent jcr:primaryType="jnt:contentList">
+                            <main-resource-display j:mainResourceView="hidden.customPicker"
+                                                   jcr:primaryType="jnt:mainResourceDisplay"/>
+                        </pagecontent>
+                    </custom-picker>
+                </site-settings-base>
+            </templates>
+        </training-components>
+    </modules>
 </content>

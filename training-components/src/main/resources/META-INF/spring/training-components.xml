@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="org.jahia.ajax.gwt.helper.ModuleGWTResources">
+        <property name="javascriptResources">
+            <list>
+                <value>/modules/training-components/javascript/custom-picker.js</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="customPicker" class="org.jahia.services.uicomponents.bean.contentmanager.ManagerConfiguration">
+        <property name="titleKey" value="label.customPicker@resources.training-components"/>
+        <property name="customPickerConfiguration">
+            <bean class="org.jahia.ajax.gwt.client.widget.content.CustomPickerConfiguration">
+                <property name="initMethodName" value="pickerInit"/>
+                <property name="loadFieldValueMethodName" value="pickerLoad"/>
+                <property name="getFieldValueFromPickerMethodName" value="pickerGet"/>
+            </bean>
+        </property>
+    </bean>
+</beans>

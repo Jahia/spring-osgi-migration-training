@@ -1,12 +1,13 @@
 const path = require('path');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
     return {
         entry: {
-            app: path.resolve(__dirname, 'src/jahia/app.js')
+            picker: [path.resolve(__dirname, 'src/components/jahia.js')]
         },
         output: {
-            path: path.resolve(__dirname, '../main/resources/javascript/apps/'),
+            path: path.resolve(__dirname, '../main/resources/javascript/picker/'),
             filename: '[name].bundle.js'
         },
         resolve: {
@@ -17,7 +18,7 @@ module.exports = (env, argv) => {
             rules: [
                 {
                     test: /\.jsx?$/,
-                    include: [path.join(__dirname, 'src/jahia'), path.join(__dirname, 'src/components')],
+                    include: [path.join(__dirname, 'src/components')],
                     loader: 'babel-loader',
                 },
                 {
@@ -29,6 +30,7 @@ module.exports = (env, argv) => {
                 }
             ],
         },
+        plugins: [new CleanWebpackPlugin({verbose: false})],
         mode: argv.mode,
     };
 };
