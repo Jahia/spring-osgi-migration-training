@@ -1,5 +1,5 @@
 function getCustomPickerData() {
-    var customPickerFrame = document.getElementById("customPicker");
+    const customPickerFrame = document.getElementById("customPicker");
     if (!customPickerFrame || !customPickerFrame.contentWindow || !customPickerFrame.contentWindow.customPickerData) {
         return undefined;
     }
@@ -7,22 +7,32 @@ function getCustomPickerData() {
 }
 
 
-function pickerInit(data) {
-    return $.parseHTML("<iframe id=\"customPicker\" style=\"border: 0\" width=\"100%\" height=\"100%\" src=\"" + jahiaGWTParameters.baseUrl + "/sites/" + jahiaGWTParameters.siteKey + ".custom-picker.html\"/>")[0];
+function pickerInit() {
+    return $.parseHTML("<iframe id=\"customPicker\" style=\"position: absolute; height: 100%; border: none\" width=\"100%\" height=\"100%\" src=\"" + jahiaGWTParameters.baseUrl + "/sites/" + jahiaGWTParameters.siteKey + ".custom-picker.html\"/>")[0];
 }
 
 function pickerLoad(data) {
-    var pickerData = getCustomPickerData();
-    var $data = data;
+    const load = values => {
+        if (values !== undefined) {
+            const key = Object.keys(values)[0];
+            if (values[key] !== undefined && Array.isArray(values[key])) {
+                return Array.from(values[key]);
+            }
+        }
+        return [];
+    };
+
+    let pickerData = getCustomPickerData();
+    const $data = data;
     if (pickerData !== undefined) {
-        pickerData.load(data);
+        pickerData.data = $data;
     } else {
-        var customPickerFrame = document.getElementById("customPicker");
+        const customPickerFrame = document.getElementById("customPicker");
         if (customPickerFrame !== undefined && customPickerFrame.contentWindow !== undefined) {
-            customPickerFrame.contentWindow.addEventListener("load", function (event) {
+            customPickerFrame.contentWindow.addEventListener("load", () => {
                 pickerData = getCustomPickerData();
                 if (pickerData !== undefined) {
-                    pickerData.load($data);
+                    pickerData.data = $data;
                 }
             });
         }
@@ -30,9 +40,9 @@ function pickerLoad(data) {
 }
 
 function pickerGet() {
-    var pickerData = getCustomPickerData();
+    const pickerData = getCustomPickerData();
     if (pickerData !== undefined) {
-        return pickerData.get();
+        return pickerData.data;
     }
     return undefined;
 }

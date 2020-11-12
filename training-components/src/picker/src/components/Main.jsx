@@ -2,7 +2,10 @@ import React from "react";
 import {Button, Grid, Modal, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
-export default function Main() {
+export default function Main({context, data}) {
+    console.log(`Context: ${JSON.stringify(context)}`);
+    console.log(`Data: ${JSON.stringify(data)}`);
+
     const rand = () => Math.round(Math.random() * 20) - 10;
     const getModalStyle = () => {
         const top = 50 + rand();
@@ -28,10 +31,15 @@ export default function Main() {
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
+        console.log(`Data O1: ${JSON.stringify(data)}`);
         setOpen(true);
+        data.data = ['/sites/digitall/home/footer-1'];
+        console.log(`Data O2: ${JSON.stringify(data)}`);
     };
     const handleClose = () => {
+        console.log(`Data C1: ${JSON.stringify(data)}`);
         setOpen(false);
+        console.log(`Data C2: ${JSON.stringify(data)}`);
     };
 
     const classes = useStyles();

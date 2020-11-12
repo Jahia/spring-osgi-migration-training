@@ -3,6 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean class="org.jahia.ajax.gwt.helper.ModuleGWTResources">
+        <property name="CSSResources">
+            <list>
+                <value>/modules/training-components/css/custom-picker.css</value>
+            </list>
+        </property>
         <property name="javascriptResources">
             <list>
                 <value>/modules/training-components/javascript/custom-picker.js</value>

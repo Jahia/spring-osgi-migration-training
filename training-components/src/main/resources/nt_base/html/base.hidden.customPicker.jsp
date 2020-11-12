@@ -17,43 +17,21 @@
 <c:set var="targetId" value="customPicker_${fn:replace(currentNode.identifier,'-','_')}"/>
 <div id="${targetId}"><fmt:message key="label.customPicker"/>...</div>
 
-<script type="text/javascript">
-    window.addEventListener("DOMContentLoaded", () => {
-        window.customPickerData = {
-            contextualData: {},
-            data: [],
-            setContextualData: contextualData => {
-                this.contextualData = contextualData;
-            },
-            load: values => {
-                console.log(values.d);
-                if (values.d !== undefined && Array.isArray(values.d)) {
-                    customPickerData.data = Array.from(values.d);
-                }
-            },
-            add: path => this.data.push(path),
-            remove: path => {
-                this.data = this.data.filter(ele => !ele.endsWith(path));
-            },
-            removeAt: index => (index !== -1) ? this.data.splice(index, 1) : null,
-            removeAll: () => {
-                customPickerData.data = [];
-            },
-            get: () => customPickerData.data,
-        };
-
-        contextJsParameters = {};
-        <c:choose>
+<template:addResources type="inlinejavascript">
+    <script type="text/javascript">
+        window.addEventListener("DOMContentLoaded", () => {
+            window.customPickerData = window.customPickerData || {};
+            const context = {};
+            <c:choose>
             <c:when test="${renderContext.editMode}" >
-                setTimeout(() => {
-                    customPickerReactRender(contextJsParameters, '${targetId}');
-                    customPickerData.setContextualData(contextJsParameters);
-                }, 1000);
+            setTimeout(() => {
+                customPickerReactRender(context, customPickerData, '${targetId}');
+            }, 1000);
             </c:when>
             <c:otherwise>
-                customPickerReactRender(contextJsParameters, '${targetId}');
-                customPickerData.setContextualData(contextJsParameters);
+            customPickerReactRender(context, customPickerData, '${targetId}');
             </c:otherwise>
-        </c:choose>
-    });
-</script>
+            </c:choose>
+        });
+    </script>
+</template:addResources>

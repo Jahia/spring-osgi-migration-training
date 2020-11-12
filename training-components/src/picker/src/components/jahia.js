@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Main from "./Main";
 
-window.customPickerReactRender = (contextualData, targetId) => {
+window.customPickerReactRender = (context, data, targetId) => {
     ReactDOM.render(<React.StrictMode>
-        <Main dxContext={contextualData}/>
+        <Main context={context} data={data}/>
     </React.StrictMode>, document.getElementById(targetId));
 };
