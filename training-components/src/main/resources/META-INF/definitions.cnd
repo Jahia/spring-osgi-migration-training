@@ -21,6 +21,8 @@
 
 [tnt:myApp] > jnt:content, jmix:editorialContent, jmix:structuredContent, jmix:nodeReference, mix:title
  - j:node (weakreference, picker[type='custom',config='customPicker']) < 'jnt:content'
+ - path (string)
+ - desc (string, richtext[ckeditor.customConfig='$context/modules/training-components/javascript/ckeditor_config.js'])
 
 [tmix:identifiableContent] mixin
  - id (string) mandatory
