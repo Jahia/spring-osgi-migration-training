@@ -5,7 +5,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import Content from "./Content";
 
-export default function CustomPicker() {
+const CustomPicker = () => {
     const [showPickerDialog, setShowPickerDialog] = React.useState(false);
     const showDialog = () => {
         setShowPickerDialog(true);
@@ -23,4 +23,5 @@ export default function CustomPicker() {
             </DialogContent>
         </Dialog>
     </>;
-}
+};
+export default CustomPicker;

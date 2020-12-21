@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Grid, Modal, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
-export default function Main({context, data}) {
+const Main = ({context, data}) => {
     console.log(`Context: ${JSON.stringify(context)}`);
     console.log(`Data: ${JSON.stringify(data)}`);
 
@@ -69,4 +69,5 @@ export default function Main({context, data}) {
             </Paper>
         </Grid>
     </Grid>;
-}
+};
+export default Main;

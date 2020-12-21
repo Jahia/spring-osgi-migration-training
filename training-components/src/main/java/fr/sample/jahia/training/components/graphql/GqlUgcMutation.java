@@ -18,10 +18,10 @@ import java.util.Locale;
 @GraphQLName("UGCMutation")
 @GraphQLDescription("UGC Mutations")
 public class GqlUgcMutation extends GqlJcrMutation {
-    private Locale locale;
+    private final Locale locale;
 
     public GqlUgcMutation(String workspace, Locale locale) {
-        super(workspace);
+        super(workspace, true);
         this.locale = locale;
     }
 

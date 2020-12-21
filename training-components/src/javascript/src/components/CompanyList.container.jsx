@@ -4,7 +4,7 @@ import {gql} from 'apollo-boost';
 import CompanyList from './CompanyList';
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-export default () => {
+const CompanyListContainer = () => {
     const COMPANIES_QUERY = gql`query CompaniesListQuery($language: String) {
         companies(workspace: LIVE, language: $language, descendantPath: "/sites/digitall") {
             uuid
@@ -33,3 +33,4 @@ export default () => {
     }
     return <></>;
 };
+export default CompanyListContainer;

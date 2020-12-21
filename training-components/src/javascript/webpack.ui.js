@@ -1,12 +1,10 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
     const plugins = [
-        new CleanWebpackPlugin({verbose: false}),
         new webpack.HashedModuleIdsPlugin({
             hashFunction: 'sha256',
             hashDigest: 'hex',
@@ -28,8 +26,8 @@ module.exports = (env, argv) => {
         entry: {
             "training-components": [
                 path.resolve(__dirname, 'src/jahia/publicPath'),
-                path.resolve(__dirname, 'src/jahia/index.js')
-            ]
+                path.resolve(__dirname, 'src/jahia/index.js'),
+            ],
         },
         output: {
             path: path.resolve(__dirname, '../main/resources/javascript/apps/'),

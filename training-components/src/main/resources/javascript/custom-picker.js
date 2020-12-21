@@ -12,18 +12,8 @@ function pickerInit() {
 }
 
 function pickerLoad(data) {
-    const load = values => {
-        if (values !== undefined) {
-            const key = Object.keys(values)[0];
-            if (values[key] !== undefined && Array.isArray(values[key])) {
-                return Array.from(values[key]);
-            }
-        }
-        return [];
-    };
-
-    let pickerData = getCustomPickerData();
     const $data = data;
+    let pickerData = getCustomPickerData();
     if (pickerData !== undefined) {
         pickerData.data = $data;
     } else {
