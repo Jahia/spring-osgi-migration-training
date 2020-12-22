@@ -1,16 +1,12 @@
 import React from "react";
-import {Button, Grid, Modal, Paper} from "@material-ui/core";
+import {Button, Grid, Input, Modal, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
-const Content = ({context, data}) => {
-    console.log(`Context: ${JSON.stringify(context)}`);
-    console.log(`Data: ${JSON.stringify(data)}`);
-
+const Content = ({id, value, onChange}) => {
     const rand = () => Math.round(Math.random() * 20) - 10;
     const getModalStyle = () => {
         const top = 50 + rand();
         const left = 50 + rand();
-
         return {
             top: `${top}%`,
             left: `${left}%`,
@@ -31,27 +27,15 @@ const Content = ({context, data}) => {
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
-        console.log(`Data O1: ${JSON.stringify(data)}`);
         setOpen(true);
-        data.data = ['/sites/digitall/home/footer-1'];
-        console.log(`Data O2: ${JSON.stringify(data)}`);
     };
     const handleClose = () => {
-        console.log(`Data C1: ${JSON.stringify(data)}`);
         setOpen(false);
-        console.log(`Data C2: ${JSON.stringify(data)}`);
     };
 
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
-
-    const body = <div style={modalStyle} className={classes.paper}>
-        <h2 id="simple-modal-title">Text in a modal</h2>
-        <p id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </p>
-    </div>;
 
     return <Grid container>
         <Grid item xs={12}>
@@ -64,7 +48,12 @@ const Content = ({context, data}) => {
                     onClose={handleClose}
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description">
-                    {body}
+                    <div style={modalStyle} className={classes.paper}>
+                        <h2 id="simple-modal-title">Enter a value</h2>
+                        <p id="simple-modal-description">
+                            <Input id={id} type={"text"} value={value} onChange={evt => onChange(evt?.target?.value)} fullWidth={true}/>
+                        </p>
+                    </div>
                 </Modal>
             </Paper>
         </Grid>

@@ -5,7 +5,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import Content from "./Content";
 
-const CustomPicker = () => {
+const CustomPicker = ({id, value, onChange}) => {
     const [showPickerDialog, setShowPickerDialog] = React.useState(false);
     const showDialog = () => {
         setShowPickerDialog(true);
@@ -19,7 +19,7 @@ const CustomPicker = () => {
         <Dialog open={showPickerDialog} onClose={hideDialog}>
             <DialogTitle>Browse</DialogTitle>
             <DialogContent>
-                <Content/>
+                <Content id={id} data={value} onChange={onChange}/>
             </DialogContent>
         </Dialog>
     </>;
