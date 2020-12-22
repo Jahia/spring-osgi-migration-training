@@ -1,12 +1,10 @@
 module.exports = {
     sourceMaps: 'inline',
-    presets: [
-        ['@babel/preset-env', {targets: {node: 'current'}}],
-        '@babel/preset-typescript'
-    ],
+    presets: ['@babel/preset-react'],
     plugins: [
         '@babel/plugin-transform-classes',
         '@babel/plugin-proposal-class-properties',
-        ['@babel/plugin-transform-runtime', {regenerator: true}]
+        ['@babel/plugin-transform-runtime', {regenerator: true}],
+        '@babel/plugin-proposal-optional-chaining'
     ]
 };

@@ -1,7 +1,7 @@
 # NodeJS
 src/main/resources/javascript/apps
+src/main/resources/javascript/picker
 node
 node_modules
 yarn-error.log
 yarn.lock
-package.lock

@@ -1,0 +1,9 @@
+{
+  "name": "tnt:myApp",
+  "fields": [
+    {
+      "name": "path",
+      "selectorType": "custom-picker"
+    }
+  ]
+}

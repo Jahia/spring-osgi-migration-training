@@ -30,3 +30,20 @@
 <c:if test="${renderContext.editMode}">
     <template:module path="*" nodeTypes="jnt:text"/>
 </c:if>
+
+<template:addResources type="inlinejavascript">
+    <script type="text/javascript">
+        $(function () {
+            fetch('/modules/graphql', {
+                method: 'POST',
+                body: JSON.stringify({
+                    query: `{members}`
+                })
+            }).then(res => res.json()).then(data => {
+                console.log(data.data.members);
+            }).catch(e => {
+                console.error(e.message);
+            });
+        });
+    </script>
+</template:addResources>

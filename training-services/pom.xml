@@ -50,7 +50,7 @@
     <parent>
         <groupId>fr.sample.jahia.training</groupId>
         <artifactId>spring-osgi-migration-training</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>training-services</artifactId>
     <name>training-services</name>

@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper/Paper';
 import './App.css';
 import Main from './components/Main';
 
-export default () => <div className="App">
+const App = () => <div className="App">
     <header className="App-header">
         <img src={logo} className="App-logo" alt="logo"/>
         <p>
@@ -25,3 +25,4 @@ export default () => <div className="App">
         </Grid>
     </Grid>
 </div>;
+export default App;

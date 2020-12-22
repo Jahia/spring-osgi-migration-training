@@ -6,7 +6,7 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import CompanyList from './CompanyList.container';
 import {ToastProvider} from 'react-toast-notifications';
 
-export default ({config}) => <StylesProvider
+const Main = ({config}) => <StylesProvider
     generateClassName={createGenerateClassName({productionPrefix: 'training-'})}>
     <ApolloProvider client={new ApolloClient(Object.assign({
         uri: '/modules/graphql',
@@ -17,3 +17,4 @@ export default ({config}) => <StylesProvider
         </ToastProvider>
     </ApolloProvider>
 </StylesProvider>;
+export default Main;

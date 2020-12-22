@@ -1,3 +1,4 @@
+<j = 'http://www.jahia.org/jahia/1.0'>
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
 <jnt = 'http://www.jahia.org/jahia/nt/1.0'>
 <mix = 'http://www.jcp.org/jcr/mix/1.0'>
@@ -8,8 +9,8 @@
  - contactMail (string) mandatory internationalized < '^$|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$'
  - repeatMail (string) mandatory internationalized < '^$|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$'
  - image (weakreference, picker[type='image']) < 'jmix:image'
- - language (string, choicelist[locale,sort])
- - city (string, choicelist[city='44',sort])
+ - language (string, choicelist[locale, sort])
+ - city (string, choicelist[city='44', sort])
  - code (string) protected
  - file (weakreference, picker[type='file']) < 'jnt:file'
  + data (tnt:sampleData) = tnt:sampleData autocreated
@@ -19,7 +20,10 @@
  + * (jnt:text)
  + * (jnt:contentReference)
 
-[tnt:myApp] > jnt:content, jmix:editorialContent, jmix:structuredContent, mix:title
+[tnt:myApp] > jnt:content, jmix:editorialContent, jmix:structuredContent, jmix:nodeReference, mix:title
+ - j:node (weakreference, picker[type='custom',config='customPicker']) < 'jnt:content'
+ - path (string)
+ - desc (string, richtext[ckeditor.customConfig='$context/modules/training-components/javascript/ckeditor_config.js'])
 
 [tmix:identifiableContent] mixin
  - id (string) mandatory
@@ -28,9 +32,9 @@
  - lat (double)
  - lng (double)
 
-[tnt:country] > jnt:content, jmix:editorialContent, jmix:structuredContent, tmix:identifiableContent, mix:title
- + * (tnt:city) = tnt:city
-
 [tnt:city] > jnt:content, jmix:editorialContent, jmix:structuredContent, tmix:identifiableContent, tmix:geographicalContent, mix:title
  - postalCode (string) multiple
+
+[tnt:country] > jnt:content, jmix:editorialContent, jmix:structuredContent, tmix:identifiableContent, mix:title
+ + * (tnt:city) = tnt:city
 
